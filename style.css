@@ -132,6 +132,7 @@
 /* Floating Image Animation */
 
 .home-image img{
+<<<<<<< HEAD
     width:600px;
     animation:floatImage 4s ease-in-out infinite;
 }
@@ -270,3 +271,7 @@
     color:#444;
     line-height:1.8;
 }
+=======
+    width:450px;
+}
+>>>>>>> a6a9348b5a80def5cd02c1b225beb8b8cd971b3c
