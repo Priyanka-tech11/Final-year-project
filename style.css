@@ -132,7 +132,7 @@
 /* Floating Image Animation */
 
 .home-image img{
-<<<<<<< HEAD
+
     width:600px;
     animation:floatImage 4s ease-in-out infinite;
 }
@@ -271,7 +271,99 @@
     color:#444;
     line-height:1.8;
 }
-=======
-    width:450px;
+.how-it-works {
+    padding: 120px 8%;
+    background: linear-gradient(to bottom, #0f172a, #0b1120);
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
 }
->>>>>>> a6a9348b5a80def5cd02c1b225beb8b8cd971b3c
+
+.section-title {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #38bdf8, #6366f1);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.section-subtitle {
+    font-size: 18px;
+    color: #94a3b8;
+    margin-bottom: 70px;
+}
+
+.steps {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    position: relative;
+}
+
+.steps::before {
+    content: "";
+    position: absolute;
+    top: 50px;
+    left: 5%;
+    width: 90%;
+    height: 2px;
+    background: linear-gradient(to right, #38bdf8, #6366f1);
+    z-index: 0;
+}
+
+.step {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    padding: 40px 25px;
+    border-radius: 20px;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    transition: all 0.4s ease;
+    transform: translateY(50px);
+    opacity: 0;
+}
+
+.step.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.step:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(56,189,248,0.3);
+}
+
+.step-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #38bdf8, #6366f1);
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    margin: auto;
+    box-shadow: 0 0 20px rgba(56,189,248,0.5);
+}
+
+.step h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.step p {
+    font-size: 14px;
+    color: #cbd5e1;
+}
+
+@media(max-width: 992px) {
+    .steps {
+        flex-direction: column;
+    }
+
+    .steps::before {
+        display: none;
+    }
+}
