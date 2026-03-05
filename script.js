@@ -1,4 +1,3 @@
-// ================= TYPING TEXT =================
 
 const words = ["Healthcare", "Diagnosis", "Medical Support", "Health Analysis"];
 let wordIndex = 0;
