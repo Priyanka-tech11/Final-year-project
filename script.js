@@ -149,3 +149,19 @@ document.querySelectorAll(
 
 });
 
+document.getElementById("contactForm").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+const msg = document.getElementById("successMessage");
+
+msg.innerHTML = "✅ Message sent successfully!";
+msg.style.opacity = "1";
+
+setTimeout(() => {
+msg.innerHTML = "";
+document.getElementById("contactForm").reset();
+},3000);
+
+});
+
