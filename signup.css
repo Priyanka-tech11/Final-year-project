@@ -1,0 +1,119 @@
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#022b3f,#024765);
+overflow:hidden;
+}
+
+.signup-container{
+animation:fadeIn 1s ease;
+}
+
+.signup-card{
+background: rgba(255,255,255,0.2);
+padding:40px;
+border-radius:15px;
+width:320px;
+text-align:center;
+box-shadow:0 20px 40px rgba(0,0,0,0.2);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,0.3);
+}
+
+.signup-card h2{
+margin-bottom:5px;
+color:#0284c7;
+}
+
+.subtitle{
+margin-bottom:25px;
+color:#475569;
+}
+
+.input-group{
+position:relative;
+margin-bottom:20px;
+}
+
+.input-group input{
+width:100%;
+padding:12px;
+border:1px solid #cbd5e1;
+border-radius:8px;
+outline:none;
+font-size:14px;
+}
+
+.input-group label{
+position:absolute;
+top:12px;
+left:12px;
+font-size:14px;
+color:#64748b;
+transition:0.3s;
+pointer-events:none;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label{
+top:-9px;
+left:10px;
+background:white;
+padding:0 5px;
+font-size:12px;
+color:#0284c7;
+}
+
+.password-box span{
+position:absolute;
+right:10px;
+top:12px;
+cursor:pointer;
+}
+
+.signup-btn{
+width:100%;
+padding:12px;
+border:none;
+background:linear-gradient(135deg,#0284c7,#38bdf8);
+color:white;
+border-radius:8px;
+font-size:15px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.signup-btn:hover{
+transform:scale(1.05);
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+.extra-text{
+margin-top:15px;
+font-size:13px;
+}
+
+.extra-text a{
+color:#0284c7;
+text-decoration:none;
+}
+
+#signupMessage{
+margin-top:15px;
+font-size:14px;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(-20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
