@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AI Healthcare Dashboard</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Poppins, sans-serif
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .section {
+            padding: 80px;
+            background: linear-gradient(135deg, #eef6ff, #dcecff);
+        }
+
+
+        #home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 80px;
+
+            background-image: url("bg.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            color: #0A3D62;
+        }
+
+
+        .hero {
+            max-width: 600px;
+        }
+
+
+        .hero h1 {
+            font-size: 50px;
+            font-weight: 500;
+            color: #0A3D62;
+            font-weight: bold;
+        }
+
+
+        .hero span {
+            color: #0a66c2;
+        }
+
+
+        .hero p {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #444;
+            line-height: 1.6;
+        }
+
+
+        .hero-btn {
+            margin-top: 25px;
+            padding: 14px 25px;
+            background: #1B6CA8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 200px;
+        }
+
+        .hero-btn:hover {
+            background: #0A3D62;
+        }
+
+        #home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 80px;
+            background-image: url("bg.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            color: white;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 20px 80px;
+
+            background: transparent;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #4DA6FF;
+        }
+
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #0A3D62;
+            font-size: 17px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #0a66c2;
+        }
+
+
+        .logout {
+            background: #1B6CA8;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .logout:hover {
+            background: #0A3D62;
+        }
+
+
+        .diagnosis-container {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, #eef6ff, #dcecff);
+        }
+
+
+        .diagnosis-left {
+            width: 60%;
+        }
+
+        #reports h1 {
+            font-size: 42px;
+            color: #0A3D62;
+            text-align:center;
+
+        }
+
+        #reports p {
+            margin: 15px 0;
+            color: #444;
+            text-align:center;
+
+        }
+
+        #profile h1 {
+            font-size: 42px;
+            color: #0A3D62;
+            text-align:center;
+
+        }
+
+        #profile p {
+            margin: 15px 0;
+            color: #444;
+            text-align:center;
+
+        }
+
+        .diagnosis-left h1 {
+            font-size: 42px;
+            color: #0A3D62;
+        }
+
+        .diagnosis-left p {
+            margin: 15px 0;
+            color: #444;
+        }
+
+
+        .diagnosis-left input,
+        .diagnosis-left textarea,
+        .diagnosis-left select {
+            width: 100%;
+            padding: 14px;
+            margin-top: 12px;
+            border-radius: 10px;
+            border: 1px solid #cfe3ff;
+            background: #f1f6ff;
+        }
+
+
+        .diagnosis-left button {
+            margin-top: 15px;
+            padding: 14px;
+            background: #1B6CA8;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .diagnosis-left button:hover {
+            background: #0A3D62;
+        }
+
+
+        .diagnosis-right {
+            width: 35%;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .diagnosis-right h2 {
+            color: #0A3D62;
+        }
+
+        .diagnosis-right p {
+            margin-top: 10px;
+            color: #555;
+        }
+
+        .diagnosis-right ul {
+            margin-top: 15px;
+        }
+
+        .diagnosis-right li {
+            margin-top: 10px;
+            color: #0A3D62;
+        }
+
+
+        .report-container {
+            width: 90%;
+            max-width: 900px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .report-container h1 {
+            color: #0a66c2;
+            margin-bottom: 15px;
+        }
+
+        .report-container p {
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .report-card {
+            border: 1px solid #cfe3ff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #f1f6ff;
+        }
+
+        .report-card h2 {
+            color: #0a66c2;
+            margin-bottom: 10px;
+        }
+
+        .report-card p {
+            margin: 5px 0;
+            color: #333;
+        }
+
+        .report-card ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .report-card ul li {
+            color: #0A3D62;
+        }
+
+        .report-disclaimer {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #888;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+
+        .profile-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .profile-title h2 {
+            font-size: 26px;
+            color: #0a66c2;
+        }
+
+        .profile-title p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .edit-btn {
+            background: #1b6ca8;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .edit-btn:hover {
+            background: #0a3d62;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 5px;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background: #f9fafc;
+        }
+
+        .field.full-width {
+            grid-column: span 2;
+        }
+
+        .save-btn {
+            display: none;
+            width: 100%;
+            padding: 12px;
+            background: #34a853;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .save-btn:hover {
+            background: #2c8c45;
+        }
+
+        .action-buttons {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .action {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .action.diagnosis {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .action.history {
+            background: #4ecdc4;
+            color: white;
+        }
+
+        .action.reports {
+            background: #1a73e8;
+            color: white;
+        }
+
+        .action.logout {
+            background: #444;
+            color: white;
+        }
+
+        .action:hover {
+            opacity: 0.9;
+        }
+
+        .dashboard-footer {
+            background: #0f172a;
+            color: #cbd5f5;
+            padding: 40px 20px 20px 20px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 30px;
+        }
+
+        .footer-left h2 {
+            font-size: 24px;
+            color: #ffffff;
+        }
+
+        .footer-left p {
+            font-size: 14px;
+            color: #dcecff;
+            margin-top: 10px;
+        }
+
+        .footer-links h3,
+        .footer-contact h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #ffffff;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links ul li a {
+            color: #38bdf8;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-links ul li a:hover {
+            color: #ffeb3b;
+        }
+
+        .footer-contact p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .footer-socials {
+            margin-top: 10px;
+        }
+
+        .footer-socials a {
+            margin-right: 10px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .footer-socials a:hover img {
+            transform: scale(1.2);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            padding-top: 10px;
+            font-size: 13px;
+            color: #dcecff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="logo">AI Healthcare</div>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#diagnosis">Diagnosis</a>
+            <a href="#reports">Reports</a>
+            <a href="#profile">Profile</a>
+        </div>
+
+
+        <a href="index.html" class="logout">Logout</a>
+    </div>
+    <div id="home" class="section">
+
+        <div class="hero">
+            <h1>Welcome <span id="username">User!</span> 👋</h1>
+
+            <p>
+                Advanced AI-powered healthcare system that analyzes symptoms,
+                predicts diseases and connects you with certified doctors instantly.
+            </p>
+
+            <button class="hero-btn" onclick="document.getElementById('diagnosis').scrollIntoView({behavior:'smooth'})">
+                Get Started
+            </button>
+        </div>
+
+    </div>
+
+
+    <div id="diagnosis" class="section">
+
+        <div class="diagnosis-container">
+
+
+            <div class="diagnosis-left">
+                <h1>🩺 AI Disease Diagnosis</h1>
+                <p>
+                    Enter patient details and symptoms. Our AI will analyze and predict possible conditions.
+                </p>
+
+                <input type="text" id="name" placeholder="👤 Patient Name">
+
+                <input type="number" id="age" placeholder="🎂 Age">
+
+                <select id="gender">
+                    <option value="">⚧ Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+
+                <input type="text" id="weight" placeholder="⚖ Weight (kg)">
+                <input type="text" id="height" placeholder="📏 Height (cm)">
+
+                <textarea id="symptoms" placeholder="🧾 Describe symptoms (fever, cough, headache...)"></textarea>
+
+                <input type="text" id="duration" placeholder="⏱ Duration (e.g. 2 days)">
+
+                <input type="text" id="diseaseHistory" placeholder="📜 Past diseases (optional)">
+
+                <button onclick="saveData()">🔍 Analyze with AI</button>
+
+                <p id="result"></p>
+            </div>
+
+
+            <div class="diagnosis-right">
+                <h2>🤖 AI Diagnosis</h2>
+                <p>
+                    This smart system analyzes your symptoms and provides possible health insights.
+                    Always consult a doctor for medical advice.
+                </p>
+
+                <ul>
+                    <li>✔ Symptom Analysis</li>
+                    <li>✔ Instant Prediction</li>
+                    <li>✔ Secure Data</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+    <div id="reports" class="section">
+        <h1>📄 Patient Report</h1>
+        <p> AI-generated insights and detailed medical reports based on your diagnosis and health data.</p>
+        <div class="report-container">
+            <h1> Patient Reports</h1>
+            <p>All reports generated after AI analysis</p>
+
+            <div id="reportsList">
+                <!-- Reports will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+    <div id="profile" class="section">
+        <h1>👤 My Profile </h1>
+        <p>Your personal health overview, capturing essential details and medical information in one place.</p>
+        <div class="profile-container">
+
+            <!-- HEADER -->
+            <div class="profile-header">
+                <div class="profile-title">
+                    <h2>👤 My Profile</h2>
+                    <p>Manage your personal and health details</p>
+                </div>
+                <button class="edit-btn" onclick="toggleEdit()">Edit</button>
+            </div>
+
+            <!-- PROFILE INFO -->
+            <div class="profile-info">
+
+                <!-- Info Grid -->
+                <div class="profile-grid">
+
+                    <div class="field">
+                        <label>Name</label>
+                        <input type="text" value="Priyanka Sharma" disabled>
+                    </div>
+
+                    <div class="field">
+                        <label>Email</label>
+                        <input type="email" value="priyanka@gmail.com" disabled>
+                    </div>
+
+                    <div class="field">
+                        <label>Phone</label>
+                        <input type="text" value="+91 9876543210" disabled>
+                    </div>
+
+                    <div class="field">
+                        <label>Age</label>
+                        <input type="number" value="20" disabled>
+                    </div>
+
+                    <div class="field">
+                        <label>Weight (kg)</label>
+                        <input type="number" value="45" disabled>
+                    </div>
+
+                    <div class="field">
+                        <label>Height (cm)</label>
+                        <input type="number" value="155" disabled>
+                    </div>
+
+                    <div class="field full-width">
+                        <label>Address</label>
+                        <input type="text" value="123 Street, City, Country" disabled>
+                    </div>
+
+                </div>
+
+                <button class="save-btn" onclick="saveProfile()">💾 Save Changes</button>
+            </div>
+
+       
+        </div>
+    </div>
+
+
+
+    </div>
+    <footer class="dashboard-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h2>AI Healthcare</h2>
+                <p>Advanced AI-powered healthcare system for instant analysis and patient care.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#diagnosis">Diagnosis</a></li>
+                    <li><a href="#reports">Reports</a></li>
+                    <li><a href="#profile">Profile</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p>Email: support@aihealthcare.com</p>
+                <p>Phone: +91 9876543210</p>
+                <div class="footer-socials">
+                    <a href="#"><img src="https://img.icons8.com/ios-filled/24/0A3D62/facebook-new.png" /></a>
+                    <a href="#"><img src="https://img.icons8.com/ios-filled/24/0A3D62/twitter.png" /></a>
+                    <a href="#"><img src="https://img.icons8.com/ios-filled/24/0A3D62/linkedin.png" /></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 AI Healthcare. This is an AI-powered dashboard for informational purposes only.</p>
+        </div>
+    </footer>
+
+    <script>
+
+
+
+        function updateProfileFromDiagnosis(data) {
+            const profileSection = document.querySelector("#profile");
+
+            profileSection.querySelector('input[value="Priyanka Sharma"]').value = data.name || "-";
+            profileSection.querySelector('input[type="email"]').value = data.email || "user@example.com"; // optional, if email provided in form
+            profileSection.querySelector('input[value="+91 9876543210"]').value = data.phone || "-"; // optional
+            profileSection.querySelector('input[type="number"][value="20"]').value = data.age || "-";
+            profileSection.querySelector('input[type="number"][value="45"]').value = data.weight || "-";
+            profileSection.querySelector('input[type="number"][value="155"]').value = data.height || "-";
+            profileSection.querySelector('.field.full-width input').value = data.address || "-";
+        }
+        function saveData() {
+            let data = {
+                name: document.getElementById('name').value || "Unknown",
+                age: document.getElementById('age').value || "-",
+                gender: document.getElementById('gender').value || "-",
+                weight: document.getElementById('weight').value || "-",
+                height: document.getElementById('height').value || "-",
+                symptoms: document.getElementById('symptoms').value || "-",
+                duration: document.getElementById('duration').value || "-",
+                history: document.getElementById('diseaseHistory').value || "-"
+            };
+
+            // AI Prediction
+            let diagnosis = aiPredictDisease(data.symptoms);
+            data.diagnosis = diagnosis;
+
+            let recommendations = generateRecommendations(diagnosis);
+            data.recommendations = recommendations;
+
+            aiReports.push(data);
+
+            // Update Reports Section
+            displayReports();
+
+            // Update Profile Section based on this data
+            updateProfileFromDiagnosis(data);
+
+            document.getElementById('result').innerText = "Diagnosis Generated ✅";
+
+            // Scroll to reports section
+            document.getElementById('reports').scrollIntoView({ behavior: "smooth" });
+        }
+
+
+        document.querySelector(".diagnosis").onclick = function () {
+            window.location.href = "diagnosis.html";
+        }
+
+        document.querySelector(".history").onclick = function () {
+            window.location.href = "history.html";
+        }
+
+        document.querySelector(".reports").onclick = function () {
+            window.location.href = "reports.html";
+        }
+
+        document.querySelector(".logout").onclick = function () {
+            alert("Logged out successfully!");
+            window.location.href = "login.html";
+        }
+    </script>
+
+
+    </script>
+
+</body>
+
+</html>

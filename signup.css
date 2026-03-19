@@ -14,10 +14,10 @@ animation:fadeIn 1s ease;
 }
 
 .signup-card{
-background: rgba(255,255,255,0.2);
+background: rgba(180, 167, 238, 0.2);
 padding:40px;
 border-radius:15px;
-width:320px;
+width:350px;
 text-align:center;
 box-shadow:0 20px 40px rgba(0,0,0,0.2);
 backdrop-filter:blur(10px);
@@ -31,7 +31,7 @@ color:#0284c7;
 
 .subtitle{
 margin-bottom:25px;
-color:#475569;
+color:#02214e;
 }
 
 .input-group{
@@ -40,7 +40,7 @@ margin-bottom:20px;
 }
 
 .input-group input{
-width:100%;
+width:90%;
 padding:12px;
 border:1px solid #cbd5e1;
 border-radius:8px;

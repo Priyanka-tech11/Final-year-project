@@ -1,38 +1,21 @@
-const password = document.getElementById("password");
-const toggle = document.getElementById("togglePassword");
-const form = document.getElementById("loginForm");
-const message = document.getElementById("loginMessage");
+document.getElementById("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
 
-toggle.onclick = function(){
+    let email = document.querySelector("input[type='email']").value;
+    let password = document.querySelector("input[type='password']").value;
 
-if(password.type === "password"){
-password.type = "text";
-toggle.innerHTML = "..";
-}
-else{
-password.type = "password";
-toggle.innerHTML = "👁";
-}
-
-}
-
-form.addEventListener("submit", function(e){
-
-e.preventDefault();
-
-const btn = document.querySelector(".login-btn");
-
-btn.innerHTML = "Logging in...";
-btn.style.opacity = "0.7";
-
-setTimeout(()=>{
-
-message.innerHTML = "✅ Login successful!";
-message.style.color = "green";
-
-btn.innerHTML = "Login";
-btn.style.opacity = "1";
-
-},1500);
-
+    fetch("http://localhost:8080/auth/login",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({email,password})
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        if(data){
+            localStorage.setItem("userId",data.id);
+            window.location.href="dashboard.html";
+        }else{
+            document.getElementById("loginMessage").innerText="Invalid Login";
+        }
+    });
 });

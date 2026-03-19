@@ -1,28 +1,18 @@
-function togglePassword(){
-let pass=document.getElementById("password")
+document.getElementById("signupForm").addEventListener("submit", function(e){
+    e.preventDefault();
 
-if(pass.type==="password"){
-pass.type="text"
-}else{
-pass.type="password"
-}
-}
+    let name = document.querySelector("input[type='text']").value;
+    let email = document.querySelector("input[type='email']").value;
+    let password = document.getElementById("password").value;
 
-document.getElementById("signupForm").addEventListener("submit",function(e){
-
-e.preventDefault()
-
-let pass=document.getElementById("password").value
-let confirm=document.getElementById("confirmPassword").value
-let message=document.getElementById("signupMessage")
-
-if(pass!==confirm){
-message.innerHTML="Passwords do not match"
-message.style.color="red"
-return
-}
-
-message.innerHTML="Account created successfully!"
-message.style.color="green"
-
-})
+    fetch("http://localhost:8080/auth/signup",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({name,email,password})
+    })
+    .then(res=>res.json())
+    .then(()=>{
+        document.getElementById("signupMessage").innerText="Account Created!";
+        setTimeout(()=>window.location.href="login.html",1500);
+    });
+});
