@@ -1,18 +1,34 @@
-document.getElementById("signupForm").addEventListener("submit", function(e){
-    e.preventDefault();
+const form = document.getElementById('signupForm');
 
-    let name = document.querySelector("input[type='text']").value;
-    let email = document.querySelector("input[type='email']").value;
-    let password = document.getElementById("password").value;
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
 
-    fetch("http://localhost:8080/auth/signup",{
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({name,email,password})
-    })
-    .then(res=>res.json())
-    .then(()=>{
-        document.getElementById("signupMessage").innerText="Account Created!";
-        setTimeout(()=>window.location.href="login.html",1500);
+  const fullname = document.getElementById('fullname').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
+
+  if (password !== confirmPassword) {
+    document.getElementById('signupMessage').textContent = "Passwords do not match!";
+    return;
+  }
+
+  try {
+    const response = await fetch('http://localhost:8080/auth/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fullname, email, password })
     });
+
+    if (response.ok) {
+      document.getElementById('signupMessage').textContent = "Signup Successful! Please login now.";
+      setTimeout(() => { window.location.href = "login.html"; }, 1500);
+    } else {
+      const error = await response.text();
+      document.getElementById('signupMessage').textContent = "Signup Failed! " + error;
+    }
+  } catch (error) {
+    document.getElementById('signupMessage').textContent = "Error connecting to server.";
+    console.error(error);
+  }
 });

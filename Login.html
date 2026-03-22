@@ -2,49 +2,45 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Healthcare Login</title>
 <link rel="stylesheet" href="login.css">
 </head>
-
 <body>
 
 <div class="login-container">
+  <div class="login-card">
+    <h2>🧠 AI Healthcare</h2>
+    <p class="subtitle">Login to access AI Diagnosis</p>
 
-<div class="login-card">
+    <form id="loginForm">
 
-<h2>🧠 AI Healthcare</h2>
-<p class="subtitle">Login to access AI Diagnosis</p>
+      <div class="input-group">
+        <input type="email" id="email" placeholder="Email Address" required>
+      </div>
 
-<form id="loginForm" action="LoginServlet" method="post">
+      <div class="input-group password-box">
+        <input type="password" id="password" placeholder="Password" required>
+        <span id="togglePassword">👁</span>
+      </div>
 
-<div class="input-group">
-<input type="email" required>
-<label>Email Address</label>
-</div>
+      <button type="submit" class="login-btn">Login</button>
+      <p class="extra-text">
+        Don't have an account? <a href="signup.html">Register</a>
+      </p>
+      <p id="loginMessage"></p>
 
-<div class="input-group password-box">
-<input type="password" id="password" required>
-<label>Password</label>
-<span id="togglePassword">👁</span>
-</div>
-
-<button type="submit" class="login-btn">
-Login
-</button>
-
-<p class="extra-text">
-Don't have an account? <a href="signup.html">Register</a>
-</p>
-
-<p id="loginMessage"></p>
-
-</form>
-
-</div>
-
+    </form>
+  </div>
 </div>
 
 <script src="login.js"></script>
-
+<script>
+  const toggle = document.getElementById('togglePassword');
+  toggle.addEventListener('click', () => {
+    const pwd = document.getElementById('password');
+    pwd.type = pwd.type === "password" ? "text" : "password";
+  });
+</script>
 </body>
 </html>
