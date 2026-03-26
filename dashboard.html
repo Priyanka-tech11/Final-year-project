@@ -511,6 +511,85 @@
             font-size: 13px;
             color: #dcecff;
         }
+        /* SECTION */
+.section {
+    padding: 50px 20px;
+    background: linear-gradient(to right, #e0f7fa, #fce4ec);
+    min-height: 100vh;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    color: #0077b6;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* REPORT CONTAINER */
+.report-container {
+    max-width: 1000px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* HEADER */
+.report-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.report-header h2 {
+    color: #023e8a;
+}
+
+/* BUTTONS */
+.actions button {
+    padding: 10px 15px;
+    margin-left: 10px;
+    border: none;
+    background: #0077b6;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.actions button:hover {
+    background: #023e8a;
+}
+
+/* TABLE */
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.report-table th {
+    background: #0077b6;
+    color: white;
+    padding: 12px;
+}
+
+.report-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    white-space: pre-line;
+}
+
+.report-table tr:hover {
+    background: #f1f1f1;
+}
     </style>
 </head>
 
@@ -602,17 +681,39 @@
         </div>
 
     </div>
-    <div id="reports" class="section">
-        <h1>📄 Patient Report</h1>
-        <p> AI-generated insights and detailed medical reports based on your diagnosis and health data.</p>
-        <div class="report-container">
-            <h1> Patient Reports</h1>
-            <p>All reports generated after AI analysis</p>
+   <div id="reports" class="section">
 
-            <div id="reportsList">
-                <!-- Reports will be dynamically inserted here -->
+    <h1 class="section-title">📄 Patient Report</h1>
+    <p class="section-subtitle">
+        AI-generated insights and detailed medical reports based on your diagnosis and health data.
+    </p>
+
+    <div class="report-container">
+
+        <div class="report-header">
+            <h2>🩺 Patient Reports</h2>
+            <div class="actions">
+                <button onclick="generateReport()">➕ New Report</button>
+                <button onclick="downloadReport()">⬇ Download</button>
             </div>
         </div>
+
+        <table class="report-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Disease</th>
+                    <th>Precautions</th>
+                </tr>
+            </thead>
+            <tbody id="reportsList">
+                <!-- Dynamic data -->
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
     </div>
     <div id="profile" class="section">
         <h1>👤 My Profile </h1>
@@ -632,44 +733,44 @@
             <div class="profile-info">
 
                 <!-- Info Grid -->
-                <div class="profile-grid">
+               <div class="profile-grid">
 
-                    <div class="field">
-                        <label>Name</label>
-                        <input type="text" value="Priyanka Sharma" disabled>
-                    </div>
+    <div class="field">
+        <label>Name</label>
+        <input type="text" id="profileName" placeholder="Enter Name" disabled>
+    </div>
 
-                    <div class="field">
-                        <label>Email</label>
-                        <input type="email" value="priyanka@gmail.com" disabled>
-                    </div>
+    <div class="field">
+        <label>Email</label>
+        <input type="email" id="profileEmail" placeholder="Enter Email" disabled>
+    </div>
 
-                    <div class="field">
-                        <label>Phone</label>
-                        <input type="text" value="+91 9876543210" disabled>
-                    </div>
+    <div class="field">
+        <label>Phone</label>
+        <input type="text" id="profilePhone" placeholder="Enter Phone" disabled>
+    </div>
 
-                    <div class="field">
-                        <label>Age</label>
-                        <input type="number" value="20" disabled>
-                    </div>
+    <div class="field">
+        <label>Age</label>
+        <input type="number" id="profileAge" placeholder="Enter Age" disabled>
+    </div>
 
-                    <div class="field">
-                        <label>Weight (kg)</label>
-                        <input type="number" value="45" disabled>
-                    </div>
+    <div class="field">
+        <label>Weight (kg)</label>
+        <input type="number" id="profileWeight" placeholder="Enter Weight" disabled>
+    </div>
 
-                    <div class="field">
-                        <label>Height (cm)</label>
-                        <input type="number" value="155" disabled>
-                    </div>
+    <div class="field">
+        <label>Height (cm)</label>
+        <input type="number" id="profileHeight" placeholder="Enter Height" disabled>
+    </div>
 
-                    <div class="field full-width">
-                        <label>Address</label>
-                        <input type="text" value="123 Street, City, Country" disabled>
-                    </div>
+    <div class="field full-width">
+        <label>Address</label>
+        <input type="text" id="profileAddress" placeholder="Enter Address" disabled>
+    </div>
 
-                </div>
+</div>
 
                 <button class="save-btn" onclick="saveProfile()">💾 Save Changes</button>
             </div>
@@ -715,76 +816,120 @@
         </div>
     </footer>
 
-    <script>
+  <script>
+
+function saveData() {
+
+    const data = {
+        name: document.getElementById('name').value || "Unknown",
+        age: document.getElementById('age').value,
+        gender: document.getElementById('gender').value,
+        weight: document.getElementById('weight').value,
+        height: document.getElementById('height').value,
+        symptoms: document.getElementById('symptoms').value || "-",
+        duration: document.getElementById('duration').value || "-",
+        pastDiseases: document.getElementById('diseaseHistory').value || "-"
+    };
+
+    // ✅ Update profile instantly
+    updateProfileFromDiagnosis(data);
+    updateProfileInBackend(data);
+
+    // ✅ CALL BACKEND AI
+    fetch("http://localhost:8080/analyze", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.text())
+    .then(result => {
+
+        console.log(result);
+
+        // ✅ Extract disease & precautions
+        const parts = result.split("Precautions:");
+        const disease = parts[0].replace("Possible diseases:", "").trim();
+        const precautions = parts[1] ? parts[1].trim() : "No precautions found";
+
+        const today = new Date().toLocaleDateString();
+
+        // ✅ Add to report table
+        const row = `
+            <tr>
+                <td>${today}</td>
+                <td>${disease}</td>
+                <td>${precautions}</td>
+            </tr>
+        `;
+
+        document.getElementById("reportsList").innerHTML += row;
+
+        document.getElementById('result').innerText = "✅ Diagnosis Generated";
+
+        // ✅ Scroll to report section
+        document.getElementById('reports').scrollIntoView({ behavior: "smooth" });
+
+    })
+    .catch(err => {
+        console.error(err);
+        alert("❌ Error connecting to AI");
+    });
+}
 
 
-
-        function updateProfileFromDiagnosis(data) {
-            const profileSection = document.querySelector("#profile");
-
-            profileSection.querySelector('input[value="Priyanka Sharma"]').value = data.name || "-";
-            profileSection.querySelector('input[type="email"]').value = data.email || "user@example.com"; // optional, if email provided in form
-            profileSection.querySelector('input[value="+91 9876543210"]').value = data.phone || "-"; // optional
-            profileSection.querySelector('input[type="number"][value="20"]').value = data.age || "-";
-            profileSection.querySelector('input[type="number"][value="45"]').value = data.weight || "-";
-            profileSection.querySelector('input[type="number"][value="155"]').value = data.height || "-";
-            profileSection.querySelector('.field.full-width input').value = data.address || "-";
-        }
-        function saveData() {
-            let data = {
-                name: document.getElementById('name').value || "Unknown",
-                age: document.getElementById('age').value || "-",
-                gender: document.getElementById('gender').value || "-",
-                weight: document.getElementById('weight').value || "-",
-                height: document.getElementById('height').value || "-",
-                symptoms: document.getElementById('symptoms').value || "-",
-                duration: document.getElementById('duration').value || "-",
-                history: document.getElementById('diseaseHistory').value || "-"
-            };
-
-            // AI Prediction
-            let diagnosis = aiPredictDisease(data.symptoms);
-            data.diagnosis = diagnosis;
-
-            let recommendations = generateRecommendations(diagnosis);
-            data.recommendations = recommendations;
-
-            aiReports.push(data);
-
-            // Update Reports Section
-            displayReports();
-
-            // Update Profile Section based on this data
-            updateProfileFromDiagnosis(data);
-
-            document.getElementById('result').innerText = "Diagnosis Generated ✅";
-
-            // Scroll to reports section
-            document.getElementById('reports').scrollIntoView({ behavior: "smooth" });
-        }
+// ✅ PROFILE UPDATE UI
+function updateProfileFromDiagnosis(data) {
+    document.getElementById("profileAge").value = data.age || "";
+    document.getElementById("profileWeight").value = data.weight || "";
+    document.getElementById("profileHeight").value = data.height || "";
+}
 
 
-        document.querySelector(".diagnosis").onclick = function () {
-            window.location.href = "diagnosis.html";
-        }
+// ✅ PROFILE UPDATE BACKEND
+function updateProfileInBackend(data) {
 
-        document.querySelector(".history").onclick = function () {
-            window.location.href = "history.html";
-        }
+    if (!data.age || !data.weight || !data.height) return;
 
-        document.querySelector(".reports").onclick = function () {
-            window.location.href = "reports.html";
-        }
+    const payload = {
+        userId: localStorage.getItem("userId"),
+        age: data.age,
+        weight: data.weight,
+        height: data.height
+    };
 
-        document.querySelector(".logout").onclick = function () {
+    fetch("http://localhost:8080/profile/update", {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(res => res.json())
+    .then(() => console.log("Profile Updated ✅"))
+    .catch(err => console.error(err));
+}
+
+
+// ✅ DOWNLOAD BUTTON (OPTIONAL)
+function downloadReport() {
+    alert("PDF download coming soon 😄");
+}
+
+
+// ✅ NAVIGATION (SAFE CHECK)
+document.querySelectorAll(".diagnosis, .history, .reports, .logout").forEach(btn => {
+    if (!btn) return;
+
+    btn.onclick = function () {
+        if (btn.classList.contains("logout")) {
             alert("Logged out successfully!");
             window.location.href = "login.html";
         }
-    </script>
+    };
+});
 
-
-    </script>
-
+</script>
 </body>
-
 </html>

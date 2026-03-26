@@ -12,12 +12,13 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
-            .csrf(csrf -> csrf.disable()) // disable CSRF for frontend fetch
+            .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/auth/**").permitAll() // allow signup/login
-                .anyRequest().authenticated() // protect other endpoints
+                .requestMatchers("/auth/**").permitAll()
+                .requestMatchers("/analyze").permitAll() // ✅ added this line
+                .anyRequest().authenticated()
             )
-            .formLogin(form -> form.disable()) // disable default Spring login page
+            .formLogin(form -> form.disable())
             .httpBasic(basic -> basic.disable());
 
         return http.build();
