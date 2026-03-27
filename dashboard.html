@@ -590,6 +590,25 @@
 .report-table tr:hover {
     background: #f1f1f1;
 }
+
+
+.history-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.report-card {
+    background: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.date {
+    font-size: 12px;
+    color: gray;
+}
     </style>
 </head>
 
@@ -603,6 +622,7 @@
             <a href="#home">Home</a>
             <a href="#diagnosis">Diagnosis</a>
             <a href="#reports">Reports</a>
+            <a href="#history"> History </a>
             <a href="#profile">Profile</a>
         </div>
 
@@ -714,6 +734,19 @@
     </div>
 
 </div>
+
+
+<div id="history" class="section">
+    <h1>📜 My Health History</h1>
+
+    <!-- User Name -->
+    <div class="user-info">
+        <h2>Name: <span id="userName"></span></h2>
+    </div>
+
+    <!-- Reports -->
+    <div id="historyContainer" class="history-container"></div>
+</div>
     </div>
     <div id="profile" class="section">
         <h1>👤 My Profile </h1>
@@ -795,6 +828,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#diagnosis">Diagnosis</a></li>
                     <li><a href="#reports">Reports</a></li>
+                    <li><a href="#history">History</a>
                     <li><a href="#profile">Profile</a></li>
                 </ul>
             </div>
@@ -815,8 +849,7 @@
             <p>© 2026 AI Healthcare. This is an AI-powered dashboard for informational purposes only.</p>
         </div>
     </footer>
-
-  <script>
+<script>
 
 function saveData() {
 
@@ -871,6 +904,9 @@ function saveData() {
         // ✅ Scroll to report section
         document.getElementById('reports').scrollIntoView({ behavior: "smooth" });
 
+        // ✅ SAVE REPORT TO BACKEND
+        generateAndSaveReport({disease, precautions});
+
     })
     .catch(err => {
         console.error(err);
@@ -879,7 +915,6 @@ function saveData() {
 }
 
 
-// ✅ PROFILE UPDATE UI
 function updateProfileFromDiagnosis(data) {
     document.getElementById("profileAge").value = data.age || "";
     document.getElementById("profileWeight").value = data.weight || "";
@@ -887,7 +922,6 @@ function updateProfileFromDiagnosis(data) {
 }
 
 
-// ✅ PROFILE UPDATE BACKEND
 function updateProfileInBackend(data) {
 
     if (!data.age || !data.weight || !data.height) return;
@@ -912,13 +946,34 @@ function updateProfileInBackend(data) {
 }
 
 
-// ✅ DOWNLOAD BUTTON (OPTIONAL)
+// ✅ NEW FUNCTION: Save report to backend
+function generateAndSaveReport(data) {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) return; // Safety check
+
+    fetch("http://localhost:8080/saveReport", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            userId: user.id,
+            name: user.name,
+            disease: data.disease,
+            precautions: data.precautions
+        })
+    })
+    .then(res => res.json())
+    .then(res => console.log("Report Saved ✅", res))
+    .catch(err => console.error("Save Error:", err));
+}
+
+
 function downloadReport() {
     alert("PDF download coming soon 😄");
 }
 
 
-// ✅ NAVIGATION (SAFE CHECK)
 document.querySelectorAll(".diagnosis, .history, .reports, .logout").forEach(btn => {
     if (!btn) return;
 
@@ -930,6 +985,31 @@ document.querySelectorAll(".diagnosis, .history, .reports, .logout").forEach(btn
     };
 });
 
+
+function loadHistory(userId) {
+
+    fetch(`http://localhost:8080/history/${userId}`)
+        .then(res => res.json())
+        .then(data => {
+
+            let html = "";
+
+            data.forEach((report, index) => {
+                html += `
+                    <div class="report-card">
+                        <h3>Report #${index + 1}</h3>
+                        <p><strong>Disease:</strong> ${report.disease}</p>
+                        <p><strong>Precautions:</strong> ${report.precautions}</p>
+                        <p class="date">📅 ${report.createdAt}</p>
+                    </div>
+                `;
+            });
+
+            document.getElementById("historyContainer").innerHTML = html;
+        });
+}
+
 </script>
+ 
 </body>
 </html>
