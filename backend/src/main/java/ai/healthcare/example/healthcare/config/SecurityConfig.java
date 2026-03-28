@@ -16,11 +16,11 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
-            .csrf(csrf -> csrf.disable())
-            .cors(cors -> {})
+            .csrf(csrf -> csrf.disable())  // disable CSRF for API
+            .cors(cors -> {})              // enable CORS
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // ✅ FIX
-                .requestMatchers("/auth/**").permitAll()
+                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // allow preflight requests
+                .requestMatchers("/auth/**").permitAll()                // signup/login
                 .requestMatchers("/analyze").permitAll()
                 .requestMatchers("/reports/**").permitAll()
                 .requestMatchers("/patients_profile/**").permitAll()
@@ -36,9 +36,15 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
 
-        config.setAllowedOrigins(List.of("http://127.0.0.1:5500"));
-        config.setAllowedMethods(List.of("*"));
+       
+        config.setAllowedOrigins(List.of("*")); 
+       
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+
+        // Allow all headers
         config.setAllowedHeaders(List.of("*"));
+
+        // Allow credentials (cookies, auth headers)
         config.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
