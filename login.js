@@ -1,41 +1,34 @@
 const form = document.getElementById('loginForm');
 
 form.addEventListener('submit', async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-  try {
-    const response = await fetch('http://ai-healthcare-app-production.up.railway.app/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password })
-    });
+    try {
+        const response = await fetch('https://ai-healthcare-app-production.up.railway.app/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
 
-    if (response.ok) {
+        const data = await response.json();
 
-      const result = await response.text(); // ✅ FIX
+        if (data.status === 'success') {
+            alert(`Welcome ${data.name}`);
 
-      document.getElementById('loginMessage').textContent = "Login Successful!";
+            // save email for future requests
+            localStorage.setItem('userEmail', data.email);
 
-      // ✅ STORE USER PROPERLY
-      localStorage.setItem("user", JSON.stringify({
-        name: result || "User",
-        email: email
-      }));
+            // redirect to dashboard
+            window.location.href = "dashboard.html";
+        } else {
+            alert(data.message);
+        }
 
-      window.location.href = "dashboard.html";
-
-    } else {
-
-      const error = await response.text(); // ✅ show real backend error
-      document.getElementById('loginMessage').textContent = error;
-
+    } catch (error) {
+        console.error('Login error:', error);
+        alert('Error connecting to server.');
     }
-
-  } catch (error) {
-    document.getElementById('loginMessage').textContent = "Error connecting to server.";
-    console.error(error);
-  }
 });
