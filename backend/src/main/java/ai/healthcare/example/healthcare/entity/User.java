@@ -9,7 +9,8 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-     @Column(nullable = false)
+
+    @Column(nullable = false)
     private String fullname;
 
     @Column(nullable = false, unique = true)
@@ -18,18 +19,37 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    
+    // ✅ GETTERS & SETTERS
 
-    // getters and setters
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
+    public Integer getId() {
+        return id;
+    }
 
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
+    public String getFullname() {
+        return fullname;
+    }
 
-        public String getFullname() { return fullname; }
-    public void setFullname(String fullname) { this.fullname = fullname; }
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

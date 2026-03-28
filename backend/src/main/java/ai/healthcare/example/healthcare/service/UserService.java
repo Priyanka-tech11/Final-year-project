@@ -12,22 +12,34 @@ public class UserService {
     @Autowired
     private UserRepository repo;
 
+    // ✅ REGISTER
     public String register(User user) {
-        // check if email already exists
-        if(repo.findByEmail(user.getEmail()).isPresent()){
+
+        if (repo.findByEmail(user.getEmail()).isPresent()) {
             return "Email already registered!";
         }
 
-        repo.save(user); // saves email + password in database
+        repo.save(user);
         return "Signup successful!";
     }
 
-    public String login(String email, String password){
+    // ✅ LOGIN (FIXED)
+    public User login(String email, String password) {
+
         User user = repo.findByEmail(email).orElse(null);
 
-        if(user == null) return "User not found!";
-        if(!user.getPassword().equals(password)) return "Incorrect password!";
+        if (user == null) {
+            System.out.println("❌ User not found");
+            return null;
+        }
 
-        return "Login successful!";
+        if (!user.getPassword().equals(password)) {
+            System.out.println("❌ Wrong password");
+            return null;
+        }
+
+        System.out.println("✅ Login success: " + user.getFullname());
+
+        return user; // ✅ RETURN FULL USER OBJECT
     }
 }

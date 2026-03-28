@@ -9,17 +9,36 @@ public class Report {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @Column(name = "user_id")
-    private int userId;
+    private Long id; // ✅ REQUIRED (even if not visible earlier)
 
     private String name;
+
+    @Column(name = "user_email") // ✅ matches DB column
+    private String userEmail;
+
     private String disease;
+
     private String precautions;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at") // ✅ matches DB column
     private Timestamp createdAt;
 
-    // getters & setters
+    // GETTERS & SETTERS
+
+    public Long getId() { return id; }
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    public String getUserEmail() { return userEmail; }
+    public void setUserEmail(String userEmail) { this.userEmail = userEmail; }
+
+    public String getDisease() { return disease; }
+    public void setDisease(String disease) { this.disease = disease; }
+
+    public String getPrecautions() { return precautions; }
+    public void setPrecautions(String precautions) { this.precautions = precautions; }
+
+    public Timestamp getCreatedAt() { return createdAt; }
+    public void setCreatedAt(Timestamp createdAt) { this.createdAt = createdAt; }
 }

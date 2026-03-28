@@ -14,12 +14,26 @@ form.addEventListener('submit', async (e) => {
     });
 
     if (response.ok) {
+
+      const result = await response.text(); // ✅ FIX
+
       document.getElementById('loginMessage').textContent = "Login Successful!";
+
+      // ✅ STORE USER PROPERLY
+      localStorage.setItem("user", JSON.stringify({
+        name: result || "User",
+        email: email
+      }));
+
       window.location.href = "dashboard.html";
+
     } else {
-      const error = await response.text();
-      document.getElementById('loginMessage').textContent = "Login Failed! Check email/password.";
+
+      const error = await response.text(); // ✅ show real backend error
+      document.getElementById('loginMessage').textContent = error;
+
     }
+
   } catch (error) {
     document.getElementById('loginMessage').textContent = "Error connecting to server.";
     console.error(error);

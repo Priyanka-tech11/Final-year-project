@@ -166,28 +166,28 @@
         #reports h1 {
             font-size: 42px;
             color: #0A3D62;
-            text-align:center;
+            text-align: center;
 
         }
 
         #reports p {
             margin: 15px 0;
             color: #444;
-            text-align:center;
+            text-align: center;
 
         }
 
         #profile h1 {
             font-size: 42px;
             color: #0A3D62;
-            text-align:center;
+            text-align: center;
 
         }
 
         #profile p {
             margin: 15px 0;
             color: #444;
-            text-align:center;
+            text-align: center;
 
         }
 
@@ -375,22 +375,7 @@
             grid-column: span 2;
         }
 
-        .save-btn {
-            display: none;
-            width: 100%;
-            padding: 12px;
-            background: #34a853;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-top: 15px;
-        }
-
-        .save-btn:hover {
-            background: #2c8c45;
-        }
-
+        
         .action-buttons {
             margin-top: 30px;
             display: flex;
@@ -511,104 +496,115 @@
             font-size: 13px;
             color: #dcecff;
         }
+
         /* SECTION */
-.section {
-    padding: 50px 20px;
-    background: linear-gradient(to right, #e0f7fa, #fce4ec);
-    min-height: 100vh;
-}
+        .section {
+            padding: 50px 20px;
+            background: linear-gradient(to right, #e0f7fa, #fce4ec);
+            min-height: 100vh;
+        }
 
-.section-title {
-    text-align: center;
-    font-size: 32px;
-    color: #0077b6;
-    margin-bottom: 10px;
-}
+        #history h1{
+            text-align: center;
+            font-size: 32px;
+            color: #0077b6;
+            margin-bottom: 10px;
 
-.section-subtitle {
-    text-align: center;
-    color: #555;
-    margin-bottom: 30px;
-}
+        }
 
-/* REPORT CONTAINER */
-.report-container {
-    max-width: 1000px;
-    margin: auto;
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            color: #0077b6;
+            margin-bottom: 10px;
+        }
 
-/* HEADER */
-.report-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
+        .section-subtitle {
+            text-align: center;
+            color: #555;
+            margin-bottom: 30px;
+        }
 
-.report-header h2 {
-    color: #023e8a;
-}
+        /* REPORT CONTAINER */
+        .report-container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
 
-/* BUTTONS */
-.actions button {
-    padding: 10px 15px;
-    margin-left: 10px;
-    border: none;
-    background: #0077b6;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-}
+        /* HEADER */
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
 
-.actions button:hover {
-    background: #023e8a;
-}
+        .report-header h2 {
+            color: #023e8a;
+        }
 
-/* TABLE */
-.report-table {
-    width: 100%;
-    border-collapse: collapse;
-}
+        /* BUTTONS */
+        .actions button {
+            padding: 10px 15px;
+            margin-left: 10px;
+            border: none;
+            background: #0077b6;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-.report-table th {
-    background: #0077b6;
-    color: white;
-    padding: 12px;
-}
+        .actions button:hover {
+            background: #023e8a;
+        }
 
-.report-table td {
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
-    white-space: pre-line;
-}
+        /* TABLE */
+        .report-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-.report-table tr:hover {
-    background: #f1f1f1;
-}
+        .report-table th {
+            background: #0077b6;
+            color: white;
+            padding: 12px;
+        }
+
+        .report-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            white-space: pre-line;
+        }
+
+        .report-table tr:hover {
+            background: #f1f1f1;
+        }
 
 
-.history-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-}
+        .history-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
 
-.report-card {
-    background: #fff;
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
+        .report-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
 
-.date {
-    font-size: 12px;
-    color: gray;
-}
+        .date {
+            font-size: 12px;
+            color: gray;
+        }
+
+        
     </style>
 </head>
 
@@ -678,7 +674,7 @@
 
                 <input type="text" id="diseaseHistory" placeholder="📜 Past diseases (optional)">
 
-                <button onclick="saveData()">🔍 Analyze with AI</button>
+                <button onclick="saveData()">🔍 Get Diagnosis</button>
 
                 <p id="result"></p>
             </div>
@@ -701,52 +697,47 @@
         </div>
 
     </div>
-   <div id="reports" class="section">
+    <div id="reports" class="section">
 
-    <h1 class="section-title">📄 Patient Report</h1>
-    <p class="section-subtitle">
-        AI-generated insights and detailed medical reports based on your diagnosis and health data.
-    </p>
+        <h1 class="section-title">📄 Patient Report</h1>
+        <p class="section-subtitle">
+            AI-generated insights and detailed medical reports based on your diagnosis and health data.
+        </p>
 
-    <div class="report-container">
+        <div class="report-container">
 
-        <div class="report-header">
-            <h2>🩺 Patient Reports</h2>
-            <div class="actions">
-                <button onclick="generateReport()">➕ New Report</button>
-                <button onclick="downloadReport()">⬇ Download</button>
+            <div class="report-header">
+                <h2>🩺 Patient Reports</h2>
+                <div class="actions">
+                    <button onclick="generateReport()">➕ New Report</button>
+                    <button onclick="downloadReport()">⬇ Download</button>
+                </div>
             </div>
+
+            <table class="report-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Disease</th>
+                        <th>Precautions</th>
+                    </tr>
+                </thead>
+                <tbody id="reportsList">
+                    <!-- Dynamic data -->
+                </tbody>
+            </table>
+
         </div>
 
-        <table class="report-table">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Disease</th>
-                    <th>Precautions</th>
-                </tr>
-            </thead>
-            <tbody id="reportsList">
-                <!-- Dynamic data -->
-            </tbody>
-        </table>
-
     </div>
 
-</div>
 
+    <div id="history" class="section">
+        <h1>📜 My Health History</h1>
 
-<div id="history" class="section">
-    <h1>📜 My Health History</h1>
-
-    <!-- User Name -->
-    <div class="user-info">
-        <h2>Name: <span id="userName"></span></h2>
+       
+        <div id="historyContainer" class="history-container"></div>
     </div>
-
-    <!-- Reports -->
-    <div id="historyContainer" class="history-container"></div>
-</div>
     </div>
     <div id="profile" class="section">
         <h1>👤 My Profile </h1>
@@ -759,6 +750,7 @@
                     <h2>👤 My Profile</h2>
                     <p>Manage your personal and health details</p>
                 </div>
+
                 <button class="edit-btn" onclick="toggleEdit()">Edit</button>
             </div>
 
@@ -766,49 +758,63 @@
             <div class="profile-info">
 
                 <!-- Info Grid -->
-               <div class="profile-grid">
+                <div class="profile-grid">
 
-    <div class="field">
-        <label>Name</label>
-        <input type="text" id="profileName" placeholder="Enter Name" disabled>
-    </div>
+                    <div class="field">
+                        <label>Name</label>
+                        <input type="text" id="profileName" placeholder="Enter Name" disabled>
+                    </div>
 
-    <div class="field">
-        <label>Email</label>
-        <input type="email" id="profileEmail" placeholder="Enter Email" disabled>
-    </div>
+                    <div class="field">
+                        <label>Email</label>
+                        <input type="email" id="profileEmail" placeholder="Enter Email" disabled>
+                    </div>
 
-    <div class="field">
-        <label>Phone</label>
-        <input type="text" id="profilePhone" placeholder="Enter Phone" disabled>
-    </div>
+                    <div class="field">
+                        <label>Phone</label>
+                        <input type="text" id="profilePhone" placeholder="Enter Phone" disabled>
+                    </div>
 
-    <div class="field">
-        <label>Age</label>
-        <input type="number" id="profileAge" placeholder="Enter Age" disabled>
-    </div>
+                    <div class="field">
+                        <label>Age</label>
+                        <input type="number" id="profileAge" placeholder="Enter Age" disabled>
+                    </div>
 
-    <div class="field">
-        <label>Weight (kg)</label>
-        <input type="number" id="profileWeight" placeholder="Enter Weight" disabled>
-    </div>
+                    <div class="field">
+                        <label>Weight (kg)</label>
+                        <input type="number" id="profileWeight" placeholder="Enter Weight" disabled>
+                    </div>
 
-    <div class="field">
-        <label>Height (cm)</label>
-        <input type="number" id="profileHeight" placeholder="Enter Height" disabled>
-    </div>
+                    <div class="field">
+                        <label>Height (cm)</label>
+                        <input type="number" id="profileHeight" placeholder="Enter Height" disabled>
+                    </div>
 
-    <div class="field full-width">
-        <label>Address</label>
-        <input type="text" id="profileAddress" placeholder="Enter Address" disabled>
-    </div>
+                    <div class="field full-width">
+                        <label>Address</label>
+                        <input type="text" id="profileAddress" placeholder="Enter Address" disabled>
+                    </div>
 
+                </div>
+                 <div style="margin-top: 20px; text-align: center;">
+    <button class="save-btn" onclick="saveProfile()" 
+        style="
+            padding: 10px 25px; 
+            font-size: 16px; 
+            background-color: #4CAF50; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer;
+        ">
+        💾 Save Profile
+    </button>
 </div>
 
-                <button class="save-btn" onclick="saveProfile()">💾 Save Changes</button>
+
             </div>
 
-       
+
         </div>
     </div>
 
@@ -849,47 +855,97 @@
             <p>© 2026 AI Healthcare. This is an AI-powered dashboard for informational purposes only.</p>
         </div>
     </footer>
-<script>
+   <script>
+
+function toggleEdit() {
+    const fields = ["profileName", "profileAge", "profileWeight", "profileHeight", "profileEmail", "profilePhone", "profileAddress"];
+
+    fields.forEach(id => {
+        const field = document.getElementById(id);
+        if (!field) return;
+
+        if (field.value === "") {
+            field.disabled = false;
+        } else {
+            field.disabled = !field.disabled;
+        }
+    });
+}
+
+
+// ✅ SAVE PROFILE
+function saveProfile() {
+
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+        alert("User not logged in ❌");
+        return;
+    }
+
+    const data = {
+        name: document.getElementById("profileName").value.trim(),
+        email: user.email,
+        phone: document.getElementById("profilePhone").value.trim(),
+        age: document.getElementById("profileAge").value.trim(),
+        weight: document.getElementById("profileWeight").value.trim(),
+        height: document.getElementById("profileHeight").value.trim(),
+        address: document.getElementById("profileAddress").value.trim()
+    };
+
+    fetch("http://localhost:8080/patient_profile/save", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.text())
+    .then(() => {
+        alert("✅ Profile saved successfully!");
+        toggleEdit();
+    })
+    .catch(() => alert("❌ Error saving profile"));
+}
+
+
 
 function saveData() {
+    console.log("USER DATA:", localStorage.getItem("user"));
+    alert("Function running!");
+
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+        alert("Please login first ❌");
+        return;
+    }
 
     const data = {
         name: document.getElementById('name').value || "Unknown",
         age: document.getElementById('age').value,
-        gender: document.getElementById('gender').value,
         weight: document.getElementById('weight').value,
         height: document.getElementById('height').value,
-        symptoms: document.getElementById('symptoms').value || "-",
-        duration: document.getElementById('duration').value || "-",
-        pastDiseases: document.getElementById('diseaseHistory').value || "-"
+        symptoms: document.getElementById('symptoms').value || "-"
     };
 
-    // ✅ Update profile instantly
-    updateProfileFromDiagnosis(data);
-    updateProfileInBackend(data);
+    // update profile UI
+    document.getElementById("profileName").value = data.name;
+    document.getElementById("profileAge").value = data.age;
+    document.getElementById("profileWeight").value = data.weight;
+    document.getElementById("profileHeight").value = data.height;
 
-    // ✅ CALL BACKEND AI
     fetch("http://localhost:8080/analyze", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
     })
     .then(res => res.text())
     .then(result => {
 
-        console.log(result);
-
-        // ✅ Extract disease & precautions
         const parts = result.split("Precautions:");
         const disease = parts[0].replace("Possible diseases:", "").trim();
-        const precautions = parts[1] ? parts[1].trim() : "No precautions found";
+        const precautions = parts[1] ? parts[1].trim() : "No precautions";
 
         const today = new Date().toLocaleDateString();
 
-        // ✅ Add to report table
-        const row = `
+        document.getElementById("reportsList").innerHTML += `
             <tr>
                 <td>${today}</td>
                 <td>${disease}</td>
@@ -897,119 +953,68 @@ function saveData() {
             </tr>
         `;
 
-        document.getElementById("reportsList").innerHTML += row;
-
-        document.getElementById('result').innerText = "✅ Diagnosis Generated";
-
-        // ✅ Scroll to report section
-        document.getElementById('reports').scrollIntoView({ behavior: "smooth" });
-
-        // ✅ SAVE REPORT TO BACKEND
-        generateAndSaveReport({disease, precautions});
+        // ✅ SAVE TO DB (ONLY ONE CALL)
+        fetch("http://localhost:8080/reports/save", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                userEmail: user.email,
+                disease: disease,
+                precautions: precautions
+            })
+        })
+        .then(res => res.text())
+        .then(() => {
+            console.log("✅ Report Saved");
+            loadHistory();
+        })
+        .catch(err => console.error("❌ Save Error:", err));
 
     })
-    .catch(err => {
-        console.error(err);
-        alert("❌ Error connecting to AI");
+    .catch(() => alert("❌ AI Error"));
+}
+
+
+// ✅ LOAD HISTORY
+function loadHistory() {
+
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) return;
+
+    fetch(`http://localhost:8080/reports/history/${user.email}`)
+    .then(res => res.json())
+    .then(data => {
+
+        let html = "";
+
+        data.forEach((report, index) => {
+            const date = new Date(report.createdAt).toLocaleDateString();
+
+            html += `
+                <div class="report-card">
+                    <h3>Report #${index + 1}</h3>
+                    <p><strong>Disease:</strong> ${report.disease}</p>
+                    <p><strong>Precautions:</strong> ${report.precautions}</p>
+                    <p class="date">📅 ${date}</p>
+                </div>
+            `;
+        });
+
+        document.getElementById("historyContainer").innerHTML = html;
     });
 }
 
 
-function updateProfileFromDiagnosis(data) {
-    document.getElementById("profileAge").value = data.age || "";
-    document.getElementById("profileWeight").value = data.weight || "";
-    document.getElementById("profileHeight").value = data.height || "";
-}
 
 
-function updateProfileInBackend(data) {
 
-    if (!data.age || !data.weight || !data.height) return;
-
-    const payload = {
-        userId: localStorage.getItem("userId"),
-        age: data.age,
-        weight: data.weight,
-        height: data.height
-    };
-
-    fetch("http://localhost:8080/profile/update", {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-    })
-    .then(res => res.json())
-    .then(() => console.log("Profile Updated ✅"))
-    .catch(err => console.error(err));
-}
+// ✅ LOGOUT
+document.querySelector(".logout").onclick = function () {
+    localStorage.removeItem("user");
+    alert("Logged out successfully!");
+    window.location.href = "login.html";
+};
 
 
-// ✅ NEW FUNCTION: Save report to backend
-function generateAndSaveReport(data) {
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (!user) return; // Safety check
-
-    fetch("http://localhost:8080/saveReport", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            userId: user.id,
-            name: user.name,
-            disease: data.disease,
-            precautions: data.precautions
-        })
-    })
-    .then(res => res.json())
-    .then(res => console.log("Report Saved ✅", res))
-    .catch(err => console.error("Save Error:", err));
-}
-
-
-function downloadReport() {
-    alert("PDF download coming soon 😄");
-}
-
-
-document.querySelectorAll(".diagnosis, .history, .reports, .logout").forEach(btn => {
-    if (!btn) return;
-
-    btn.onclick = function () {
-        if (btn.classList.contains("logout")) {
-            alert("Logged out successfully!");
-            window.location.href = "login.html";
-        }
-    };
-});
-
-
-function loadHistory(userId) {
-
-    fetch(`http://localhost:8080/history/${userId}`)
-        .then(res => res.json())
-        .then(data => {
-
-            let html = "";
-
-            data.forEach((report, index) => {
-                html += `
-                    <div class="report-card">
-                        <h3>Report #${index + 1}</h3>
-                        <p><strong>Disease:</strong> ${report.disease}</p>
-                        <p><strong>Precautions:</strong> ${report.precautions}</p>
-                        <p class="date">📅 ${report.createdAt}</p>
-                    </div>
-                `;
-            });
-
-            document.getElementById("historyContainer").innerHTML = html;
-        });
-}
 
 </script>
- 
-</body>
-</html>
