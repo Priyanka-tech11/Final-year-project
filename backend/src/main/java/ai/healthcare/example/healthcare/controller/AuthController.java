@@ -11,7 +11,7 @@ import ai.healthcare.example.healthcare.service.UserService;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://priyanka-tech11.github.io")
 public class AuthController {
 
     @Autowired
