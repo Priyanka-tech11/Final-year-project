@@ -931,7 +931,7 @@ function saveData() {
     document.getElementById("profileWeight").value = data.weight;
     document.getElementById("profileHeight").value = data.height;
 
-    fetch("https://ai-healthcare-app-production.up.railway.app/analyze", {
+    fetch("https://final-year-project-production-dcac.up.railway.app/analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
@@ -954,7 +954,7 @@ function saveData() {
         `;
 
         // ✅ SAVE TO DB (ONLY ONE CALL)
-        fetch("https://ai-healthcare-app-production.up.railway.app/reports/save", {
+        fetch("https://final-year-project-production-dcac.up.railway.app/patient_profile/save", {", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -981,7 +981,7 @@ function loadHistory() {
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user) return;
 
-    fetch(`https://ai-healthcare-app-production.up.railway.app/reports/history/${user.email}`)
+    fetch(`https://final-year-project-production-dcac.up.railway.app/reports/history/${user.email}`)
     .then(res => res.json())
     .then(data => {
 
