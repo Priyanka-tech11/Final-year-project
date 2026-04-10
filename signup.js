@@ -14,7 +14,7 @@ form.addEventListener('submit', async (e) => {
   }
 
   try {
-    const response = await fetch('https://ai-healthcare-app-production.up.railway.app/auth/signup',{
+    const response = await fetch('https://final-year-project-production-dcac.up.railway.app/auth/signup',{
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ fullname, email, password })
