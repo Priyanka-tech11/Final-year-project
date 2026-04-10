@@ -7,7 +7,7 @@ form.addEventListener('submit', async (e) => {
     const password = document.getElementById('password').value;
 
     try {
-        const response = await fetch('https://final-year-project-production-dcac.up.railway.app/login', {
+        const response = await fetch('https://final-year-project-production-dcac.up.railway.app/auth/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
